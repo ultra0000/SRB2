@@ -93,7 +93,7 @@ typedef long ssize_t;
 	#define strncasecmp             strnicmp
 	#define strcasecmp              strcmpi
 #endif
-#if defined (__unix__) || defined (__APPLE__) || defined (UNIXCOMMON)
+#if defined (__unix__) || defined (__APPLE__) || defined (UNIXCOMMON) || defined (__WII__)
 	#undef stricmp
 	#define stricmp(x,y) strcasecmp(x,y)
 	#undef strnicmp
@@ -152,6 +152,11 @@ size_t strlcpy(char *dst, const char *src, size_t siz);
 typedef int32_t boolean;
 #else
 #define boolean BOOL
+#endif
+
+#ifdef __WII__
+#undef true
+#undef false
 #endif
 
 #ifndef __cplusplus
