@@ -83,14 +83,14 @@
 //
 // Write a value to a little-endian, unaligned destination.
 //
-ATTRINLINE static FUNCINLINE void writeshort(void *ptr, INT32 val)
+FUNCINLINE static ATTRINLINE void writeshort(void *ptr, INT32 val)
 {
 	SINT8 *cp = ptr;
 	cp[0] = val; val >>= 8;
 	cp[1] = val;
 }
 
-ATTRINLINE static FUNCINLINE void writelong(void *ptr, INT32 val)
+FUNCINLINE static ATTRINLINE void writelong(void *ptr, INT32 val)
 {
 	SINT8 *cp = ptr;
 	cp[0] = val; val >>= 8;
@@ -111,27 +111,27 @@ ATTRINLINE static FUNCINLINE void writelong(void *ptr, INT32 val)
 
 // Read a signed quantity from little-endian, unaligned data.
 //
-ATTRINLINE static FUNCINLINE INT16 readshort(void *ptr)
+FUNCINLINE static ATTRINLINE INT16 readshort(void *ptr)
 {
 	SINT8 *cp  = ptr;
 	UINT8 *ucp = ptr;
 	return (cp[1] << 8) | ucp[0];
 }
 
-ATTRINLINE static FUNCINLINE UINT16 readushort(void *ptr)
+FUNCINLINE static ATTRINLINE UINT16 readushort(void *ptr)
 {
 	UINT8 *ucp = ptr;
 	return (ucp[1] << 8) | ucp[0];
 }
 
-ATTRINLINE static FUNCINLINE INT32 readlong(void *ptr)
+FUNCINLINE static ATTRINLINE INT32 readlong(void *ptr)
 {
 	SINT8 *cp = ptr;
 	UINT8 *ucp = ptr;
 	return (cp[3] << 24) | (ucp[2] << 16) | (ucp[1] << 8) | ucp[0];
 }
 
-ATTRINLINE static FUNCINLINE UINT32 readulong(void *ptr)
+FUNCINLINE static ATTRINLINE UINT32 readulong(void *ptr)
 {
 	UINT8 *ucp = ptr;
 	return (ucp[3] << 24) | (ucp[2] << 16) | (ucp[1] << 8) | ucp[0];
