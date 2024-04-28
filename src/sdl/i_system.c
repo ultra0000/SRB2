@@ -78,7 +78,7 @@ typedef LPVOID (WINAPI *p_MapViewOfFile) (HANDLE, DWORD, DWORD, DWORD, SIZE_T);
 #include "SDL_cpuinfo.h"
 #define HAVE_SDLCPUINFO
 
-#if defined (__unix__) || defined(__APPLE__) || (defined (UNIXCOMMON) && !defined (__HAIKU__))
+#if defined (__unix__) || defined(__APPLE__) || (defined (UNIXCOMMON) && !defined (__HAIKU__)) && !defined (__WII__)
 #if defined (__linux__)
 #include <sys/vfs.h>
 #else
@@ -94,7 +94,7 @@ typedef LPVOID (WINAPI *p_MapViewOfFile) (HANDLE, DWORD, DWORD, DWORD, SIZE_T);
 #endif
 #endif
 
-#if defined (__linux__) || (defined (UNIXCOMMON) && !defined (__HAIKU__))
+#if defined (__linux__) || (defined (UNIXCOMMON) && !defined (__HAIKU__)) && !defined (__WII__)
 #ifndef NOTERMIOS
 #include <termios.h>
 #include <sys/ioctl.h> // ioctl
@@ -137,10 +137,14 @@ typedef LPVOID (WINAPI *p_MapViewOfFile) (HANDLE, DWORD, DWORD, DWORD, SIZE_T);
 #include <errno.h>
 #endif
 
-#if defined (__unix__) || defined(__APPLE__) || defined (UNIXCOMMON)
+#if defined (__unix__) || defined(__APPLE__) || defined (UNIXCOMMON) && !defined (__WII__)
 #include <execinfo.h>
 #include <time.h>
 #define UNIXBACKTRACE
+#endif
+
+#ifdef __WII__
+#include <gccore.h>
 #endif
 
 // Locations to directly check for srb2.pk3 in
@@ -2667,7 +2671,7 @@ void I_ShutdownSystem(void)
 
 void I_GetDiskFreeSpace(INT64 *freespace)
 {
-#if defined (__unix__) || defined(__APPLE__) || defined (UNIXCOMMON)
+#if defined (__unix__) || defined(__APPLE__) || defined (UNIXCOMMON) && !defined (__WII__)
 #if defined (SOLARIS) || defined (__HAIKU__)
 	*freespace = INT32_MAX;
 	return;
@@ -2982,6 +2986,10 @@ static const char *locateWad(void)
 
 const char *I_LocateWad(void)
 {
+	#ifdef __WII__
+	chdir("sdmc:/wii/srb2");
+	return "sdmc:/wii/srb2";
+	#else
 	const char *waddir;
 
 	I_OutputMsg("Looking for WADs in: ");
@@ -2999,6 +3007,7 @@ const char *I_LocateWad(void)
 #endif
 	}
 	return waddir;
+	#endif
 }
 
 #ifdef __linux__

@@ -14,7 +14,7 @@
 #include "command.h"
 #include "i_threads.h"
 
-void CON_Init(void);
+void CON_Initialize(void);
 
 void CON_StartRefresh(void);
 void CON_StopRefresh(void);

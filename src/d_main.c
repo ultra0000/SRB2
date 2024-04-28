@@ -1476,7 +1476,7 @@ void D_SRB2Main(void)
 
 	HU_Init();
 
-	CON_Init();
+	CON_Initialize();
 
 	D_RegisterServerCommands();
 	D_RegisterClientCommands(); // be sure that this is called before D_CheckNetGame
@@ -1775,6 +1775,8 @@ const char *D_Home(void)
 
 #ifdef ANDROID
 	return "/data/data/org.srb2/";
+#elif __WII__
+	return "sdmc:/wii";
 #endif
 
 	if (M_CheckParm("-home") && M_IsNextParm())
