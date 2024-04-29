@@ -24,4 +24,4 @@ jobs:
         
         make clean -C src/
         make SDL=1 NONX86=1 -C src/ \
-         NOOPENMPT=1 NOHW=1 ECHO=1 NOGME=1 NONET=1 NOMIXER=1 UNIX=1 SDLMAIN=1 WII=1 STATIC=1 -j${nproc} 2>&1 | tee build.log
+         NOOPENMPT=1 NOHW=1 ECHO=1 NOGME=1 NONET=1 UNIX=1 SDLMAIN=1 WII=1 STATIC=1 -j${nproc} 2>&1 | tee build.log
