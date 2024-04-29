@@ -72,8 +72,10 @@ typedef off_t off64_t;
 #ifdef HAVE_PNG
 
 #ifndef _MSC_VER
+#ifndef _WII
 #ifndef _LARGEFILE64_SOURCE
 #define _LARGEFILE64_SOURCE
+#endif
 #endif
 #endif
 

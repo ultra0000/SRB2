@@ -167,6 +167,9 @@ const char *wadSearchPaths[] = {
 #elif defined (_WIN32)
 	"c:\\games",
 	"\\games",
+#elif defined (_WII)
+	"sd:/srb2wii",
+	"usb:/srb2wii",
 #endif
 	NULL
 };
@@ -2669,7 +2672,7 @@ void I_ShutdownSystem(void)
 void I_GetDiskFreeSpace(INT64 *freespace)
 {
 #if defined (__unix__) || defined(__APPLE__) || defined (UNIXCOMMON) && !defined (__WII__)
-#if defined (SOLARIS) || defined (__HAIKU__)
+#if defined (SOLARIS) || defined (__HAIKU__) || defined (_WII)
 	*freespace = INT32_MAX;
 	return;
 #else // Both Linux and BSD have this, apparently.
@@ -2983,10 +2986,6 @@ static const char *locateWad(void)
 
 const char *I_LocateWad(void)
 {
-	#ifdef __WII__
-	chdir("sdmc:/wii/srb2");
-	return "sdmc:/wii/srb2";
-	#else
 	const char *waddir;
 
 	I_OutputMsg("Looking for WADs in: ");
@@ -3004,7 +3003,6 @@ const char *I_LocateWad(void)
 #endif
 	}
 	return waddir;
-	#endif
 }
 
 #ifdef __linux__

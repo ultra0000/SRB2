@@ -86,6 +86,12 @@
 #include "ogl_sdl.h"
 #endif
 
+#ifdef REMOTE_DEBUGGING
+#ifdef __WII__
+#include <debug.h>
+#endif
+#endif
+
 // maximum number of windowed modes (see windowedModes[][])
 #define MAXWINMODES (18)
 
@@ -155,6 +161,7 @@ static const char *fallback_resolution_name = "Fallback";
 // windowed video modes from which to choose from.
 static INT32 windowedModes[MAXWINMODES][2] =
 {
+	#ifndef WII
 	{1920,1200}, // 1.60,6.00
 	{1920,1080}, // 1.66
 	{1680,1050}, // 1.60,5.25
@@ -173,6 +180,16 @@ static INT32 windowedModes[MAXWINMODES][2] =
 	{ 640, 400}, // 1.60,2.00
 	{ 320, 240}, // 1.33,1.00
 	{ 320, 200}, // 1.60,1.00
+	#else
+	{ 640, 480}, // 1.33,2.00
+	{ 640, 400}, // 1.60,2.00
+	{ 576, 432}, // 1.33,1.80
+	{ 512, 384}, // 1.33,1.60
+	{ 416, 312}, // 1.33,1.30
+	{ 400, 300}, // 1.33,1.25
+	{ 320, 240}, // 1.33,1.00
+	#endif
+
 };
 
 static void Impl_VideoSetupSDLBuffer(void);
@@ -1878,8 +1895,8 @@ void I_StartupGraphics(void)
 	//Impl_SetWindowName("SRB2 "VERSIONSTRING);
 	VID_SetMode(VID_GetModeForSize(BASEVIDWIDTH, BASEVIDHEIGHT));
 
-	vid.width = BASEVIDWIDTH; // Default size for startup
-	vid.height = BASEVIDHEIGHT; // BitsPerPixel is the SDL interface's
+	vid.width = 640; // Default size for startup
+	vid.height = 480; // BitsPerPixel is the SDL interface's
 	vid.recalc = true; // Set up the console stufff
 	vid.direct = NULL; // Maybe direct access?
 	vid.bpp = 1; // This is the game engine's Bpp

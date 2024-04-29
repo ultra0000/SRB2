@@ -474,7 +474,7 @@ enum {
 };
 
 // Name of local directory for config files and savegames
-#if (defined (__unix__) || defined (UNIXCOMMON)) && !defined (__CYGWIN__) && !defined (__APPLE__)
+#if (defined (__unix__) || defined (UNIXCOMMON)) && !defined (__CYGWIN__) && !defined (__APPLE__) && !defined(_WII) 
 #define DEFAULTDIR ".srb2"
 #else
 #define DEFAULTDIR "srb2"

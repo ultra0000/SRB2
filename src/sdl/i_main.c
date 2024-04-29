@@ -33,6 +33,17 @@
 
 #include "time.h" // For log timestamps
 
+#ifdef __WII__
+#include <limits.h>
+#ifdef REMOTE_DEBUGGING
+#include <debug.h>
+#endif
+static char wiicwd[PATH_MAX] = "sd:/";
+static char localip[16] = {0};
+static char gateway[16] = {0};
+static char netmask[16] = {0};
+#endif
+
 #ifdef HAVE_SDL
 
 #ifdef HAVE_TTF
@@ -186,10 +197,35 @@ int main(int argc, char **argv)
 #endif
 #endif
 
+// init Wii-specific stuff
+#ifdef _WII
+	// Start network
+	if_config(localip, netmask, gateway, TRUE);
+
+#ifdef REMOTE_DEBUGGING
+#if REMOTE_DEBUGGING == 0
+	DEBUG_Init(GDBSTUB_DEVICE_TCP, GDBSTUB_DEF_TCPPORT); // Port 2828
+#elif REMOTE_DEBUGGING > 2
+	DEBUG_Init(GDBSTUB_DEVICE_TCP, 5656); // Custom Port
+#elif REMOTE_DEBUGGING < 0
+	DEBUG_Init(GDBSTUB_DEVICE_USB, GDBSTUB_DEF_CHANNEL); // Slot 1
+#else
+	DEBUG_Init(GDBSTUB_DEVICE_USB, REMOTE_DEBUGGING-1); // Custom Slot
+#endif
+#endif
+	// Start FAT filesystem
+	fatInitDefault();
+
+	if (getcwd(wiicwd, PATH_MAX))
+		I_PutEnv(va("HOME=%ssrb2wii", wiicwd));
+#endif
+
 #ifdef LOGMESSAGES
 	if (!M_CheckParm("-nolog"))
 		InitLogging();
 #endif/*LOGMESSAGES*/
+
+
 
 	//I_OutputMsg("I_StartupSystem() ...\n");
 	I_StartupSystem();
