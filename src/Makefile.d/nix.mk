@@ -38,11 +38,11 @@ SDLMAIN=1
 WII=1
 STATIC=1
 NOPOSTPROCESSING=1
-PREFIX="/opt/devkitpro/devkitPPC/bin/powerpc-eabi" 
-CC=$DEVKITPPCC"/bin/powerpc-eabi-gcc" 
-PKG_CONFIG="/opt/devkitpro/portlibs/ppc/bin/powerpc-eabi-pkg-config" 
-SDL_CONFIG="/opt/devkitpro/portlibs/wii/bin/sdl2-config" 
-PNG_CONFIG="/opt/devkitpro/portlibs/ppc/bin/libpng-config"
+PREFIX=/opt/devkitpro/devkitPPC/bin/powerpc-eabi 
+CC=/opt/devkitpro/devkitPPC/bin/powerpc-eabi-gcc
+PKG_CONFIG=/opt/devkitpro/portlibs/ppc/bin/powerpc-eabi-pkg-config 
+SDL_CONFIG=/opt/devkitpro/portlibs/wii/bin/sdl2-config 
+PNG_CONFIG=/opt/devkitpro/portlibs/ppc/bin/libpng-config
 opts+=-g $(MACHDEP) -DUNIXCOMMON -I$(LIBOGC_INC)
 libs+=-g $(MACHDEP) -L$(LIBOGC_LIB) -lm
 endif
