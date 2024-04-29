@@ -38,7 +38,7 @@ SDLMAIN=1
 WII=1
 STATIC=1
 opts+= $(MACHDEP) -I$(LIBOGC_INC)
-libs+=$(MACHDEP) -L$(LIBOGC_LIB) -lm
+libs+=$(MACHDEP) -lpng -L$(LIBOGC_LIB) -lm
 endif
 
 
