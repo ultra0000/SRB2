@@ -2,7 +2,7 @@
 # Makefile options for unices (linux, bsd...)
 #
 
-EXENAME?=lsdl2srb2
+EXENAME?=lsdl2srb2.elf
 
 ifndef WII
 opts+=-DUNIXCOMMON -DLUA_USE_POSIX
@@ -48,8 +48,8 @@ CC=/opt/devkitpro/devkitPPC/bin/powerpc-eabi-gcc
 PKG_CONFIG=/opt/devkitpro/portlibs/ppc/bin/powerpc-eabi-pkg-config 
 SDL_CONFIG=/opt/devkitpro/portlibs/wii/bin/sdl2-config 
 PNG_CONFIG=/opt/devkitpro/portlibs/ppc/bin/libpng-config
-opts+=$(MACHDEP) -DUNIXCOMMON -I$(LIBOGC_INC) -D__WII__ -DREMOTE_DEBUGGING=1
-libs+=$(MACHDEP) -lmodplug -L$(LIBOGC_LIB) -lm 
+opts+=-Wall $(MACHDEP) -DUNIXCOMMON -I$(LIBOGC_INC) -D__WII__ -DREMOTE_DEBUGGING=1
+libs+=$(MACHDEP) -L$(LIBOGC_LIB) -lm 
 endif
 
 
