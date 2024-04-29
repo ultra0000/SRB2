@@ -1441,6 +1441,4 @@ boolean I_InitTcpNetwork(void)
 	return ret;
 }
 
-#ifndef __WII__
 #include "i_addrinfo.c"
-#endif

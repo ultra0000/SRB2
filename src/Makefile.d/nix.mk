@@ -44,7 +44,7 @@ PKG_CONFIG=/opt/devkitpro/portlibs/ppc/bin/powerpc-eabi-pkg-config
 SDL_CONFIG=/opt/devkitpro/portlibs/wii/bin/sdl2-config 
 PNG_CONFIG=/opt/devkitpro/portlibs/ppc/bin/libpng-config
 opts+=$(MACHDEP) -DUNIXCOMMON -I$(LIBOGC_INC) -D__WII__ 
-libs+=$(MACHDEP) -L$(LIBOGC_LIB) -lm -lmodplug
+libs+=$(MACHDEP) -lmodplug -L$(LIBOGC_LIB) -lm 
 endif
 
 
