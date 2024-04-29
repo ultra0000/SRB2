@@ -4,26 +4,48 @@
 
 EXENAME?=lsdl2srb2
 
-ifndef __WII__
+ifndef WII
 opts+=-DUNIXCOMMON -DLUA_USE_POSIX
 # Use -rdynamic so a backtrace log shows function names
 # instead of addresses
 
-#libs+=-lm -rdynamic
+libs+=-lm -rdynamic
 
 
 ifndef NOHW
 opts+=-I/usr/X11R6/include
 libs+=-L/usr/X11R6/lib
 endif
+
 endif
+
+
 
 SDL?=1
 
+ifdef WII
+include $(DEVKITPPC)/wii_rules
+NOOPENMPT=1
+NOHW=1
+ECHO=1
+NOGME=1
+NONET=1
+#NOMIXER=1
+UNIX=1
+SDLMAIN=1
+WII=1
+STATIC=1
+opts+= $(MACHDEP) -I$(LIBOGC_INC)
+libs+=$(MACHDEP) -L$(LIBOGC_LIB) -lm
+endif
+
+
 # In common usage.
+ifndef WII
 ifdef LINUX
-#libs+=-lrt
+libs+=-lrt
 passthru_opts+=NOTERMIOS
+endif
 endif
 
 # Tested by Steel, as of release 2.2.8.
