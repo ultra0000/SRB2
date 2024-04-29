@@ -120,7 +120,9 @@
 # SDL_PKGCONFIG=
 # SDL_CONFIG= - sdl-config command.
 # SDL_CFLAGS=, SDL_LDFLAGS=
-
+ifdef WII
+include $(DEVKITPPC)/wii_rules
+endif
 clean_targets=cleandep clean distclean info
 
 .PHONY : $(clean_targets) all
