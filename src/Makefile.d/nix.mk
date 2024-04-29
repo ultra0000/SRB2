@@ -24,18 +24,23 @@ endif
 SDL?=1
 
 ifdef WII
-SDL=1
+
+WII=1
 LINUX=0
 NONX86=1
-NOOPENMPT=1
+
+
 NOHW=1
 ECHO=1
-NOGME=1
+#For now no Online
 NONET=1
-#NOMIXER=1
+#Until I figure audio out
+NOMIXER=1
+NOGME=1
+NOOPENMPT=1
+
 UNIX=1
 SDLMAIN=1
-WII=1
 STATIC=1
 NOPOSTPROCESSING=1
 PREFIX=/opt/devkitpro/devkitPPC/bin/powerpc-eabi 
