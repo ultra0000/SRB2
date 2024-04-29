@@ -15,9 +15,10 @@
 - libopenmpt (Linux/OS X only)
 
 ## Compiling
-Install devkitPro and the wii-sdl2 and ppc-libpng packages
-`make PREFIX=/opt/devkitpro/devkitPPC/bin/powerpc-eabi LINUX=0 WII=1 -j{nproc}`
-
+Install devkitPro and the wii-sdl2 and ppc-libpng packages, then run this on the repo folder:
+`
+make PREFIX=/opt/devkitpro/devkitPPC/bin/powerpc-eabi LINUX=0 WII=1 -j{nproc}
+`
 See [SRB2 Wiki/Source code compiling](http://wiki.srb2.org/wiki/Source_code_compiling) for more information
 
 ## Disclaimer
