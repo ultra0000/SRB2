@@ -42,17 +42,13 @@
 	//#define NONET
 #endif
 
-#ifdef __WII__
-#define NONET
-#endif
-
 #ifdef NONET
 	#undef HAVE_MINIUPNPC
 #else
 	#ifdef USE_WINSOCK1
 		#include <winsock.h>
 	#else
-		#ifndef USE_WINSOCK || !defined (__WII__) 
+		#ifndef USE_WINSOCK
 			#include <arpa/inet.h>
 			#ifdef __APPLE_CC__
 				#ifndef _BSD_SOCKLEN_T_
@@ -68,7 +64,7 @@
 		#include <errno.h>
 		#include <time.h>
 
-		#if defined (__unix__) || defined (__APPLE__) || defined (UNIXCOMMON) || !defined (__WII__)
+		#if defined (__unix__) || defined (__APPLE__) || defined (UNIXCOMMON)
 			#include <sys/time.h>
 		#endif // UNIXCOMMON
 	#endif
@@ -1445,4 +1441,6 @@ boolean I_InitTcpNetwork(void)
 	return ret;
 }
 
+#ifndef __WII__
 #include "i_addrinfo.c"
+#endif
