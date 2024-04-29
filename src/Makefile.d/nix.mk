@@ -28,6 +28,7 @@ SDL=1
 LINUX=0
 NONX86=1
 NOOPENMPT=1
+NOPNG=1
 NOHW=1
 ECHO=1
 NOGME=1
@@ -38,7 +39,7 @@ SDLMAIN=1
 WII=1
 STATIC=1
 opts+= $(MACHDEP) -I$(LIBOGC_INC)
-libs+=$(MACHDEP) -lpng -L$(LIBOGC_LIB) -lm
+libs+=$(MACHDEP) -L$(LIBOGC_LIB) -lm
 endif
 
 
