@@ -24,7 +24,9 @@ endif
 SDL?=1
 
 ifdef WII
-include $(DEVKITPPC)/wii_rules
+SDL=1
+LINUX=0
+NONX86=1
 NOOPENMPT=1
 NOHW=1
 ECHO=1
