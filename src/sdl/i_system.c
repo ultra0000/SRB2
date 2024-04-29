@@ -143,9 +143,6 @@ typedef LPVOID (WINAPI *p_MapViewOfFile) (HANDLE, DWORD, DWORD, DWORD, SIZE_T);
 #define UNIXBACKTRACE
 #endif
 
-#ifdef __WII__
-#include <gccore.h>
-#endif
 
 // Locations to directly check for srb2.pk3 in
 const char *wadDefaultPaths[] = {
