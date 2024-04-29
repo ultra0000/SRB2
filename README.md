@@ -17,7 +17,8 @@
 ## Compiling
 Install devkitPro and the wii-sdl2 and ppc-libpng packages
 `make PREFIX=/opt/devkitpro/devkitPPC/bin/powerpc-eabi WII=1 -j{nproc}`
-See [SRB2 Wiki/Source code compiling](http://wiki.srb2.org/wiki/Source_code_compiling)
+
+See [SRB2 Wiki/Source code compiling](http://wiki.srb2.org/wiki/Source_code_compiling) for more information
 
 ## Disclaimer
 Sonic Team Junior is in no way affiliated with SEGA or Sonic Team. We do not claim ownership of any of SEGA's intellectual property used in SRB2.
