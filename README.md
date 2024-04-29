@@ -16,7 +16,7 @@
 
 ## Compiling
 Install devkitPro and the wii-sdl2 and ppc-libpng packages
-`make PREFIX=/opt/devkitpro/devkitPPC/bin/powerpc-eabi WII=1 -j{nproc}`
+`make PREFIX=/opt/devkitpro/devkitPPC/bin/powerpc-eabi LINUX=0 WII=1 -j{nproc}`
 
 See [SRB2 Wiki/Source code compiling](http://wiki.srb2.org/wiki/Source_code_compiling) for more information
 
