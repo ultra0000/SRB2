@@ -35,6 +35,7 @@
 
 #ifdef __wii__
 #include <limits.h>
+#include <fat.h>
 #ifdef REMOTE_DEBUGGING
 #include <debug.h>
 #endif
@@ -200,7 +201,7 @@ int main(int argc, char **argv)
 // init Wii-specific stuff
 #ifdef __wii__
 	// Start network
-	if_config(localip, netmask, gateway, TRUE);
+	//if_config(localip, netmask, gateway, TRUE);
 
 #ifdef REMOTE_DEBUGGING
 #if REMOTE_DEBUGGING == 0
