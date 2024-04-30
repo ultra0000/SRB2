@@ -15,7 +15,7 @@ jobs:
       run: |
         make PREFIX=/opt/devkitpro/devkitPPC/bin/powerpc-eabi LINUX=0 WII=1 -j${nproc}
         mkdir -p bin/artifact/apps/SRB2Wii
-        elf2dol bin/lsdlsrb2.elf bin/artifact/apps/SRB2Wii/boot.dol
+        elf2dol bin/lsdl2srb2.elf bin/artifact/apps/SRB2Wii/boot.dol
         cd bin/artifact/
         git clone https://git.do.srb2.org/STJr/srb2assets-public.git -b SRB2_2.2 SRB2Wii
 
