@@ -31,7 +31,7 @@ LINUX=0
 NONX86=1
 EXENAME=lsdl2srb2.elf
 DBGNAME=lsdl2srb2.debug.elf
-
+SDLMAIN=1
 NOHW=1
 ECHO=1
 #For now no Online
