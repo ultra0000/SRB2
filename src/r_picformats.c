@@ -32,8 +32,10 @@
 #ifdef HAVE_PNG
 
 #ifndef _MSC_VER
+#ifndef __wii__
 #ifndef _LARGEFILE64_SOURCE
 #define _LARGEFILE64_SOURCE
+#endif
 #endif
 #endif
 

@@ -37,7 +37,8 @@ ECHO=1
 #For now no Online
 NONET=1
 #What the
-NOPNG=1
+#NOPNG=1
+NOZLIB=1
 #Until I figure audio out
 NOMIXER=1
 NOGME=1

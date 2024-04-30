@@ -63,10 +63,6 @@ ifdef UNIX
 include Makefile.d/nix.mk
 endif
 
-ifdef WII
-include Makefile.d/sdl.mk
-endif
-
 ifeq ($(SDL), 1)
 include Makefile.d/sdl.mk
 else
