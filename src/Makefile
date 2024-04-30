@@ -254,6 +254,14 @@ opts+=$(debug_opts)
 
 opts+=$(foreach v,$(passthru_opts),$(if $($(v)),-D$(v)))
 
+ifdef WII
+SDL_CONFIG?=$(call Prefix,sdl2-config)
+SDL_CFLAGS?=$(shell $(SDL_CONFIG) --cflags)
+SDL_LDFLAGS?=$(shell $(SDL_CONFIG) \
+		$(if $(STATIC),--static-libs,--libs))
+$(eval $(call Propogate_flags,SDL))
+endif
+
 opts+=$(WFLAGS) $(CPPFLAGS) $(CFLAGS)
 libs+=$(LDFLAGS)
 asflags:=$(ASFLAGS) -x assembler-with-cpp

@@ -87,7 +87,7 @@
 #endif
 
 #ifdef REMOTE_DEBUGGING
-#ifdef __WII__
+#ifdef __wii__
 #include <debug.h>
 #endif
 #endif

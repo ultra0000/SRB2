@@ -33,7 +33,7 @@
 
 #include "time.h" // For log timestamps
 
-#ifdef __WII__
+#ifdef __wii__
 #include <limits.h>
 #ifdef REMOTE_DEBUGGING
 #include <debug.h>
@@ -198,7 +198,7 @@ int main(int argc, char **argv)
 #endif
 
 // init Wii-specific stuff
-#ifdef _WII
+#ifdef __wii__
 	// Start network
 	if_config(localip, netmask, gateway, TRUE);
 

@@ -46,6 +46,7 @@ opts+=-DHAVE_THREADS
 sources+=sdl/i_threads.c
 endif
 
+ifndef WII
 ifdef SDL_PKGCONFIG
 $(eval $(call Use_pkg_config,SDL))
 else
@@ -54,6 +55,7 @@ SDL_CFLAGS?=$(shell $(SDL_CONFIG) --cflags)
 SDL_LDFLAGS?=$(shell $(SDL_CONFIG) \
 		$(if $(STATIC),--static-libs,--libs))
 $(eval $(call Propogate_flags,SDL))
+endif
 endif
 
 ifdef MINGW

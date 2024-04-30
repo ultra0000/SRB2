@@ -21,7 +21,7 @@
 #include <winsock.h>
 #endif
 #else
-#ifndef __WII__
+#ifndef __wii__
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netdb.h>

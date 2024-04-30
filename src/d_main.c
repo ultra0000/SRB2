@@ -1775,7 +1775,7 @@ const char *D_Home(void)
 
 #ifdef ANDROID
 	return "/data/data/org.srb2/";
-#elif __WII__
+#elif __wii__
 	return "sdmc:/wii";
 #endif
 
