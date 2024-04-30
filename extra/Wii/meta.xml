@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<app version="1">
+	<name>SRB2Wii</name>
+	<version>2.2.13-Wii.0</version>
+	<release_date>20230909000000</release_date>
+	<coder>Fancy2209, Ultra0</coder>
+	<short_description>Third time's the charm</short_description>
+	<long_description>Wii Port of Sonic Robo Blast 2, a 3D open-source Sonic the Hedgehog fangame built using a modified version of the Doom Legacy port of Doom. 
+SRB2 is closely inspired by the original Sonic games from the Sega Genesis, and attempts to recreate the design in 3D. While SRB2 isn't fully completed, it already features tons of levels, enemies, speed, and quite a lot of the fun that the original Sonic games provided.
+</long_description>
+</app>
