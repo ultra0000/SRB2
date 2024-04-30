@@ -2,7 +2,7 @@
 # Makefile options for unices (linux, bsd...)
 #
 
-EXENAME?=lsdl2srb2.elf
+EXENAME?=lsdl2srb2
 
 ifndef WII
 opts+=-DUNIXCOMMON -DLUA_USE_POSIX
@@ -29,7 +29,8 @@ UNIX=1
 WII=1
 LINUX=0
 NONX86=1
-
+EXENAME=lsdl2srb2.elf
+DBGNAME=lsdl2srb2.debug.elf
 
 NOHW=1
 ECHO=1
@@ -39,8 +40,6 @@ NONET=1
 NOMIXER=1
 NOGME=1
 NOOPENMPT=1
-#SDLMAIN is defined on build
-#SDLMAIN=1
 STATIC=1
 NOPOSTPROCESSING=1
 

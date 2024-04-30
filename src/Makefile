@@ -217,7 +217,7 @@ endif
 
 # default EXENAME (usually set by platform)
 EXENAME?=srb2
-DBGNAME?=$(EXENAME).debug.elf
+DBGNAME?=$(EXENAME).debug
 
 exe:=$(bin)/$(EXENAME)
 dbg:=$(bin)/$(DBGNAME)
