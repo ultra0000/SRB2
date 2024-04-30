@@ -24,7 +24,7 @@ endif
 SDL?=1
 
 ifdef WII
-
+system=Wii
 UNIX=1
 WII=1
 LINUX=0
