@@ -26,3 +26,4 @@ src/srb2wii.elf.map
 bin/
 objs/
 src/apps
+objs/**
