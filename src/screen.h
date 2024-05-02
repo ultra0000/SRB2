@@ -50,7 +50,7 @@
 #define MAXVIDWIDTH 320 //720
 #define MAXVIDHEIGHT 240 //576
 #elif defined (WII) // Wii, VGA/640x480
-#define MAXVIDWIDTH 640
+#define MAXVIDWIDTH 720
 #define MAXVIDHEIGHT 480
 #else
 #define MAXVIDWIDTH 1920 // don't set this too high because actually
