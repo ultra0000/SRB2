@@ -131,13 +131,8 @@ static      SDL_Color    localPalette[256];
 static      SDL_Rect   **modeList = NULL;
 static       Uint8       BitsPerPixel = 16;
 #endif
-#ifndef _WII
 Uint16      realwidth = BASEVIDWIDTH;
 Uint16      realheight = BASEVIDHEIGHT;
-#else
-Uint16      realwidth = 720;
-Uint16      realheight = 480;
-#endif
 static       SDL_bool    mousegrabok = SDL_TRUE;
 static       SDL_bool    wrapmouseok = SDL_FALSE;
 #define HalfWarpMouse(x,y) if (wrapmouseok) SDL_WarpMouseInWindow(window, (Uint16)(x/2),(Uint16)(y/2))
@@ -171,9 +166,6 @@ static INT32 windowedModes[MAXWINMODES][2] =
 	{1152, 864}, // 1.33,3.60
 	{1024, 768}, // 1.33,3.20
 	{ 800, 600}, // 1.33,2.50
-	#endif
-	#ifdef _WII
-	{720, 480},
 	#endif
 	{ 640, 480}, // 1.33,2.00
 	{ 640, 400}, // 1.60,2.00
