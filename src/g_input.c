@@ -451,6 +451,11 @@ static keyname_t keynames[] =
 	{KEY_HAT1+2, "HATLEFT"},
 	{KEY_HAT1+3, "HATRIGHT"},
 	#else
+	{KEY_HAT1+1, "HATUP"},
+	{KEY_HAT1+4, "HATDOWN"},
+	{KEY_HAT1+8, "HATLEFT"},
+	{KEY_HAT1+2, "HATRIGHT"},
+	#endif
 #if !defined (_XBOX) && !defined (_PSP) && !defined (_WII)
 	{KEY_HAT1+4, "HATUP2"},
 	{KEY_HAT1+5, "HATDOWN2"},
@@ -1268,10 +1273,10 @@ void G_Controldefault(void)
 	gamecontrolbis[gc_pause      ][0] = KEY_2JOY1+18; //Home
 #endif
 #ifdef _WII
-	gamecontrol[gc_forward    ][1] = KEY_HAT1+00; //UP
-	gamecontrol[gc_backward   ][1] = KEY_HAT1+01; //DOWN
-	gamecontrol[gc_straferight][1] = KEY_JOY1+16; //ZR
-	gamecontrol[gc_strafeleft ][1] = KEY_JOY1+15; //ZL
+	gamecontrol[gc_forward    ][1] = KEY_HAT1+1; //UP
+	gamecontrol[gc_backward   ][1] = KEY_HAT1+4; //DOWN
+	gamecontrol[gc_straferight][1] = KEY_JOY1+8; //ZR
+	gamecontrol[gc_strafeleft ][1] = KEY_JOY1+2; //ZL
 	gamecontrol[gc_turnleft   ][1] = KEY_HAT1+02; //LEFT
 	gamecontrol[gc_turnright  ][1] = KEY_HAT1+03; //RIGHT
 	gamecontrol[gc_weaponnext ][1] = KEY_JOY1+11; //x
