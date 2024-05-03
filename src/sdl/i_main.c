@@ -160,7 +160,7 @@ int main(int argc, char **argv)
 	fatInitDefault();
 
 	if (getcwd(wiicwd, PATH_MAX))
-		I_PutEnv(va("HOME=sd:/srb2wii", wiicwd));
+		I_PutEnv("HOME=sd:/srb2wii");
 #endif
 
 	logdir = D_Home();
