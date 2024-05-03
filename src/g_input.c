@@ -388,8 +388,8 @@ static keyname_t keynames[] =
 #elif defined (_WII)
 	{KEY_JOY1+0,  "JOYA"},
 	{KEY_JOY1+1,  "JOYB"},
-	{KEY_JOY1+2,  "JOY1"},
-	{KEY_JOY1+3,  "JOY2"},
+	{KEY_JOY1+3,  "JOY1"},
+	{KEY_JOY1+2,  "JOY2"},
 	{KEY_JOY1+4,  "JOYMINUS"},
 	{KEY_JOY1+5,  "JOYPLUS"},
 	{KEY_JOY1+6,  "JOYHOME"},
@@ -445,10 +445,12 @@ static keyname_t keynames[] =
 	{KEY_JOY1+31, "JOY32"},
 #endif
 	// the DOS version uses Allegro's joystick support
+	#ifndef _WII
 	{KEY_HAT1+0, "HATUP"},
 	{KEY_HAT1+1, "HATDOWN"},
 	{KEY_HAT1+2, "HATLEFT"},
 	{KEY_HAT1+3, "HATRIGHT"},
+	#else
 #if !defined (_XBOX) && !defined (_PSP) && !defined (_WII)
 	{KEY_HAT1+4, "HATUP2"},
 	{KEY_HAT1+5, "HATDOWN2"},

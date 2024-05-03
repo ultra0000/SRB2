@@ -141,7 +141,9 @@ int main(int argc, char **argv)
 // init Wii-specific stuff
 #ifdef _WII
 	// Start network
-	//if_config(localip, netmask, gateway, true, 20);
+	#ifndef NONET
+	if_config(localip, netmask, gateway, true, 20);
+	#endif
 
 #ifdef REMOTE_DEBUGGING
 #if REMOTE_DEBUGGING == 0
@@ -158,20 +160,20 @@ int main(int argc, char **argv)
 	fatInitDefault();
 
 	if (getcwd(wiicwd, PATH_MAX))
-		I_PutEnv(va("HOME=%ssrb2wii", wiicwd));
+		I_PutEnv(va("HOME=sd:/srb2wii", wiicwd));
 #endif
 
 	logdir = D_Home();
 
 #ifdef LOGMESSAGES
 #ifdef _WII
-#elif defined(DEFAULTDIR)
+		logstream = fopen("./log.txt", "wt");
+#elif defined(DEFAULTDIR) 
 	if (logdir)
 		logstream = fopen(va("%s/"DEFAULTDIR"/log.txt",logdir), "wt");
 	else
 		logstream = fopen(va("%s/srb2log.txt",logdir), "a");
 #endif
-		logstream = fopen("./log.txt", "wt");
 #endif
 
 	//I_OutputMsg("I_StartupSystem() ...\n");

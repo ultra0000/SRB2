@@ -2011,7 +2011,7 @@ void I_StartupGraphics(void)
 	if (render_soft == rendermode)
 	{
 #if defined(_WII)
-		vid.width = 640;
+		vid.width = 720;
 		vid.height = 480;
 #elif defined(_PS3)
 		vid.width = 720;

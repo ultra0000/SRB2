@@ -2124,6 +2124,10 @@ INT32 I_StartupSystem(void)
 	 SDLcompiled.major, SDLcompiled.minor, SDLcompiled.patch);
 	I_OutputMsg("Linked with SDL version: %d.%d.%d\n",
 	 SDLlinked.major, SDLlinked.minor, SDLlinked.patch);
+	#ifdef _WII
+	SDL_ShowCursor(SDL_DISABLE);
+    SDL_SetHint(SDL_HINT_MOUSE_TOUCH_EVENTS, "0");
+	#endif
 	if (SDL_Init(0) < 0)
 		I_Error("SRB2: SDL System Error: %s", SDL_GetError()); //Alam: Oh no....
 #ifndef NOMUMBLE
