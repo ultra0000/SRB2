@@ -141,7 +141,7 @@ int main(int argc, char **argv)
 // init Wii-specific stuff
 #ifdef _WII
 	// Start network
-	if_config(localip, netmask, gateway, true, 20);
+	//if_config(localip, netmask, gateway, true, 20);
 
 #ifdef REMOTE_DEBUGGING
 #if REMOTE_DEBUGGING == 0
@@ -165,11 +165,11 @@ int main(int argc, char **argv)
 
 #ifdef LOGMESSAGES
 #ifdef _WII
-	logstream = fopen(va("%s/srb2log.txt",logdir), "a");
 #elif defined(DEFAULTDIR)
 	if (logdir)
 		logstream = fopen(va("%s/"DEFAULTDIR"/log.txt",logdir), "wt");
 	else
+		logstream = fopen(va("%s/srb2log.txt",logdir), "a");
 #endif
 		logstream = fopen("./log.txt", "wt");
 #endif
