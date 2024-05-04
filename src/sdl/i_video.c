@@ -110,7 +110,11 @@ UINT8 graphics_started = 0; // Is used in console.c and screen.c
 // To disable fullscreen at startup; is set in VID_PrepareModeList
 boolean allow_fullscreen = false;
 static SDL_bool disable_fullscreen = SDL_FALSE;
+#ifndef _WII
 #define USE_FULLSCREEN (disable_fullscreen||!allow_fullscreen)?0:cv_fullscreen.value
+#else
+#define USE_FULLSCREEN false
+#endif
 static SDL_bool disable_mouse = SDL_FALSE;
 #define USE_MOUSEINPUT (!disable_mouse && cv_usemouse.value && havefocus)
 #define MOUSE_MENU false //(!disable_mouse && cv_usemouse.value && menuactive && !USE_FULLSCREEN)
@@ -151,7 +155,7 @@ static const char *fallback_resolution_name = "Fallback";
 // windowed video modes from which to choose from.
 static INT32 windowedModes[MAXWINMODES][2] =
 {
-	#ifndef _WII
+#ifndef _WII
 	{1920,1200}, // 1.60,6.00
 	{1920,1080}, // 1.66
 	{1680,1050}, // 1.60,5.25
@@ -166,11 +170,15 @@ static INT32 windowedModes[MAXWINMODES][2] =
 	{1152, 864}, // 1.33,3.60
 	{1024, 768}, // 1.33,3.20
 	{ 800, 600}, // 1.33,2.50
-	#endif
 	{ 640, 480}, // 1.33,2.00
 	{ 640, 400}, // 1.60,2.00
 	{ 320, 240}, // 1.33,1.00
 	{ 320, 200}, // 1.60,1.00
+#else
+	// maybe add 320x240? -ultra0
+	{854, 480},
+	{640, 480}, // 1.33,2.00
+#endif
 };
 
 static void Impl_VideoSetupSDLBuffer(void);
@@ -236,6 +244,9 @@ static void SDLSetMode(INT32 width, INT32 height, SDL_bool fullscreen)
 	if (rendermode == render_soft)
 	{
 		SDL_RenderClear(renderer);
+#ifdef _WII
+		SDL_RenderSetScale(renderer, 1, 720/480); 
+#endif
 		SDL_RenderSetLogicalSize(renderer, width, height);
 		// Set up Texture
 		realwidth = width;
