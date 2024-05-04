@@ -215,7 +215,11 @@ static void SDLSetMode(INT32 width, INT32 height, SDL_bool fullscreen)
 				SDL_SetWindowFullscreen(window, 0);
 			}
 			// Reposition window only in windowed mode
+#ifdef _WII
 			SDL_SetWindowSize(window, width, height);
+#else
+			SDL_SetWindowSize(window, 720, 480);
+#endif
 			SDL_SetWindowPosition(window,
 				SDL_WINDOWPOS_CENTERED_DISPLAY(SDL_GetWindowDisplayIndex(window)),
 				SDL_WINDOWPOS_CENTERED_DISPLAY(SDL_GetWindowDisplayIndex(window))
@@ -224,7 +228,11 @@ static void SDLSetMode(INT32 width, INT32 height, SDL_bool fullscreen)
 	}
 	else
 	{
+#ifdef _WII
+		Impl_CreateWindow(SDL_FALSE);
+#else
 		Impl_CreateWindow(fullscreen);
+#endif
 		Impl_SetWindowIcon();
 		wasfullscreen = fullscreen;
 		SDL_SetWindowSize(window, width, height);
@@ -244,10 +252,10 @@ static void SDLSetMode(INT32 width, INT32 height, SDL_bool fullscreen)
 	if (rendermode == render_soft)
 	{
 		SDL_RenderClear(renderer);
+		SDL_RenderSetLogicalSize(renderer, width, height);
 #ifdef _WII
 		SDL_RenderSetScale(renderer, 1, 720/480); 
 #endif
-		SDL_RenderSetLogicalSize(renderer, width, height);
 		// Set up Texture
 		realwidth = width;
 		realheight = height;
